@@ -11,7 +11,8 @@ function scrapeCandidate() {
       name = getName(),
       title = getTitle(),
       resume = getResume(),
-      jobStats = getJobStats();
+      jobStats = getJobStats(),
+      profilePicUrl = getProfilePicUrl();
 
   return {
     'name': name,
@@ -21,15 +22,14 @@ function scrapeCandidate() {
     'number_of_jobs': jobStats.number_of_jobs,
     'time_at_current_job': jobStats.time_at_current_job,
     'average_tenure': jobStats.average_tenure,
-    'years_of_experience': jobStats.years_of_experience
+    'years_of_experience': jobStats.years_of_experience,
+    'profile_pic_url': profilePicUrl
   };
 };
 
 
-function getPositions() {
-  $(_x('//*[@id="profile-experience"]/div[2]/ul/li')).each(function( index ) {
-    console.log( index + ": " + $( this ).text() );
-  });
+function getProfilePicUrl() {
+  return $(_x('//*[@id="topcard"]/div[1]/img')).attr('src')
 };
 
 function getJobStats() {
