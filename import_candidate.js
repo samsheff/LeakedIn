@@ -1,7 +1,7 @@
 function importCandidate() {
   var candidate = scrapeCandidate();
 
-  $.post( "http://127.0.0.1:4567/candidate", candidate, function( result ) {
+  $.post( "http://captaincoffee.herokuapp.com/candidates", candidate, function( result ) {
     console.log(result);
   });
 };
