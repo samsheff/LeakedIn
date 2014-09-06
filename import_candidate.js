@@ -40,14 +40,16 @@ function getJobStats() {
       
   $(_x('//*[@id="profile-experience"]/div[2]/ul/li')).each(function( index ) {
       var duration = $(this.childNodes[0].childNodes[2].childNodes[2]).text().replace('(', '').replace(')', '').replace(/[a-zA-Z]+ /, '').replace(/[a-zA-Z]+/, '').split(' ');
-      var months = parseInt(duration[0]) * 12;
-      console.log(months);
-      if (duration[1]) {
-        months = months + parseInt(duration[1]);
-      };
+      var months;
+      if (duration[2] === "") {
+          months = (parseInt(duration[0]) * 12) + parseInt(duration[1]);
+      } else {
+          months = parseInt(duration[0]);
+      }
       if (index === 0) {
         currentJobTime = months;
       };
+      console.log(months);
       yearsOfExp = yearsOfExp + months;
   });
 
