@@ -1,7 +1,7 @@
 function importCandidate() {
   var candidate = scrapeCandidate();
 
-  $.post( "http://captaincoffee.herokuapp.com/candidates", candidate, function( result ) {
+  $.post( "http://captaincoffee.herokuapp.com/candidate", candidate, function( result ) {
     console.log(result);
   });
 };
@@ -104,7 +104,6 @@ function usleep(microseconds) {
     var start = new Date().getTime();
     while (new Date() < (start + microseconds/1000));
     return true;
-}
+};
 
 importCandidate();
-usleep(44690390);
