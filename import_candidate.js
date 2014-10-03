@@ -1,7 +1,7 @@
 function importCandidate() {
   var candidate = scrapeCandidate();
 
-  $.post( "http://captaincoffee.herokuapp.com/candidate", candidate, function( result ) {
+  $.post( "http://cc-nsa.herokuapp.com/candidate", candidate, function( result ) {
     console.log(result);
   });
 };
@@ -12,7 +12,8 @@ function scrapeCandidate() {
       title = getTitle(),
       resume = getResume(),
       jobStats = getJobStats(),
-      profilePicUrl = getProfilePicUrl();
+      profilePicUrl = getProfilePicUrl(),
+      publicProfileLink = getPublicProfileUrl();
 
   return {
     'name': name,
@@ -23,14 +24,19 @@ function scrapeCandidate() {
     'time_at_current_job': jobStats.time_at_current_job,
     'average_tenure': jobStats.average_tenure,
     'years_of_experience': jobStats.years_of_experience,
-    'profile_pic_url': profilePicUrl
+    'profile_pic_url': profilePicUrl,
+    'public_profile_link': publicProfileLink
   };
 };
-
 
 function getProfilePicUrl() {
   return $(_x('//*[@id="topcard"]/div[1]/img')).attr('src')
 };
+
+function getPublicProfileUrl() {
+  return $(_x('//*[@id="topcard"]/div[2]/ul/li[3]/a')).attr('href')
+};
+
 
 function getJobStats() {
   var currentJobTime = 0, 
