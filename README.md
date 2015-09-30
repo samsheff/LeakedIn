@@ -1,4 +1,4 @@
 LeakedIn
 ========
 
-Tools for Scraping LinkedIn
+Javascript Bookmarklet Tool for Scraping LinkedIn Recruiter.
